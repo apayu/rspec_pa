@@ -7,8 +7,15 @@ RSpec.describe ArticlesController, type: :controller do
       article2 = create(:article)
 
       get :index
-
       expect(assigns[:articles]).to eq([article1, article2])
+    end
+
+    it "render index template" do
+      article1 = create(:article)
+      article2 = create(:article)
+
+      get :index
+
       expect(response).to render_template("index")
     end
   end
