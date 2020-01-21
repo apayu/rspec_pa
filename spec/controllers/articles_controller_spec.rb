@@ -1,6 +1,40 @@
 require 'rails_helper'
 
 RSpec.describe ArticlesController, type: :controller do
+  describe "POST new" do
+    context "當沒有打標題時" do
+      it "不能存資料庫" do
+        expect do
+          post :create, params: { :article => { :description => "#{Faker::Lorem.paragraphs}" }}
+        end.to change{ Article.count }.by(0)
+      end
+
+      it "回到 new.html.erb 頁面" do
+        post :create, params: { :article => { :description => "#{Faker::Lorem.paragraphs}" }}
+
+        expect(response).to render_template("new")
+      end
+    end
+
+    context "有標題時" do
+      it "create a new record" do
+        article = build(:article)
+
+        expect do
+          post :create, params: { :article => attributes_for(:article) }
+        end.to change{ Article.count }.by(1)
+      end
+
+      it "redirect to articles_path" do
+        article = build(:article)
+
+        post :create, params: { :article =>attributes_for(:article) }
+
+        expect(response).to redirect_to articles_path
+      end
+    end
+  end
+
   describe "GET new"  do
     it "assigns @article" do
       article = build(:article)
