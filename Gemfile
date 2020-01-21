@@ -35,6 +35,7 @@ group :development, :test do
   gem 'rails-controller-testing', '~>1.0.1'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'shoulda-matchers', '~>3.1.1'
 end
 
 group :development do
