@@ -1,6 +1,24 @@
 require 'rails_helper'
 
 RSpec.describe ArticlesController, type: :controller do
+  describe "GET new"  do
+    it "assigns @article" do
+      article = build(:article)
+
+      get :new
+
+      expect(assigns[:article]).to be_a_new(Article)
+    end
+
+    it "render template new" do
+      article = build(:article)
+
+      get :new
+
+      expect(response).to render_template("new")
+    end
+  end
+
   describe "GET show" do
     it "assgins @article" do
       article = create(:article)

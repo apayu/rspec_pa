@@ -1,0 +1,9 @@
+<h1>新增文章</h1>
+
+<%= form_for @article do |f| %>
+  <%= f.label :title, 'title' %>
+  <%= f.text_field :title %>
+  <%= f.label :description, 'description' %>
+  <%= f.text_field :description %>
+  <%= f.submit "送出" %>
+<% end %>
