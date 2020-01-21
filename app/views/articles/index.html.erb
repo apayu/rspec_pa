@@ -1,0 +1,18 @@
+<div>
+  <table>
+    <thead>
+      <tr>
+        <td>文章標題</td>
+        <td>文章內容</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @articles.each do |a| %>
+        <tr>
+          <td><%= a.title %></td>
+          <td><%= a.description %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
